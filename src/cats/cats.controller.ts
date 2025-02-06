@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Post, Put, Query, Param } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { Cat } from 'src/cats/interfaces/cat.interface';
 import { CreateCatDto } from './dto/create-cat.dto';
@@ -12,10 +12,21 @@ export class CatsController {
         this.catsService.create(createCatDto);
     }
 
-    @Get() //이 메서드를 HTTP GET 요청에 매핑한다는 뜻
-    async findAll(): Promise<Cat[]> {
-        return this.catsService.findAll();
+    @Get(':id') //이 메서드를 HTTP GET 요청에 매핑한다는 뜻
+    async findOne(@Param('id') id: string) {
+        this.catsService.findOne();
     }
+
+    @Get()
+    async findAll(): Promise<Cat[]> {
+        return this.catsService.findAll;
+    }
+
+    @Get()
+    async findTemp(@Query() query: ListAllEntites){
+        return `This action returns all cats (limit: ${query.limit} items)`
+    }
+
     /*
      데이터베이스 쿼리, 파일 읽기/쓰기, HTTP 통신 등의 작업은 대부분 비동기가 됩니다.
     따라서 NestJS의 서비스 계층(this.catsService.findAll())이 이러한 비동기 로직(예: DB 접근)을 포함할 가능성이 매우 높습니다.
