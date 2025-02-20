@@ -1,9 +1,43 @@
+/* 기본 폰트 및 배경 */
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
     padding: 20px;
   }
   
+  /* 헤더 영역: 제목과 버튼을 한 줄에 배치 */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  /* 제목 스타일 (필요 시) */
+  .header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+  
+  /* 버튼 스타일 (링크용 또는 일반 버튼) */
+  .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+  }
+  
+  .btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* 폼 스타일 */
   form {
     margin-bottom: 10px;
   }
@@ -11,13 +45,17 @@ body {
   input[type="text"] {
     padding: 5px;
     margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
   
+  /* 일반 버튼 (이미 .btn 클래스를 사용한다면 재사용 가능) */
   button {
     padding: 5px 10px;
     background-color: #4caf50;
     color: white;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
   }
   
@@ -25,18 +63,30 @@ body {
     background-color: #45a049;
   }
   
-  ul {
-    list-style-type: none;
-    padding: 0;
+  /* 에러 메시지 스타일 */
+  .error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
   
-  li {
-    background-color: #fff;
-    padding: 8px;
-    margin: 5px 0;
+  /* 테이블 스타일 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table, th, td {
     border: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
   }
   

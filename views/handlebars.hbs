@@ -4,14 +4,23 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1>{{title}}</h1>
+        <header style="display: flex; align-items: center; justify-content: space-between;">
+            <h1>
+                {{title}}
+                <a href="/handlebars" class="btn">Home</a>
+            </h1>
+        </header>
+
         {{#if errorMessage}}
-            <div style="color: red;">{{errorMessage}}</div>
+            <!--<div style="color: red;">{{errorMessage}}</div>-->
+            <div class="error">{{errorMessage}}</div>
         {{/if}}
+
         <form action="/handlebars" method="post">
-            <input type="text" name="newData" placeholder="Add data" />
+            <input type="text" name="newData" placeholder="Add data" required />
             <button type="submit">Add</button>
         </form>
+
         <form action="/handlebars" method="get">
         <!--
         HTML 폼에서 method가 "GET"으로 설정되어 있으면, 브라우저가 폼의 입력값들을 자동으로 URL의 쿼리 파라미터로 붙여서 요청을 보냅니다.
@@ -21,6 +30,7 @@
             <input type="text" name="query" placeholder="Search data" value="{{searchQuery}}" />
             <button type="submit">Search</button>
         </form>
+        {{#if data.length}}
         <table>
             <tr>
                 <th>Data</th>
@@ -46,6 +56,9 @@
                 </tr>
             {{/each}}
         </table>
+        {{else}}
+            <p>No data available.</p>
+        {{/if}}
     </body>
 </html>
 
